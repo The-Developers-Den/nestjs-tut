@@ -5,14 +5,17 @@ import { SerializedUser, User } from 'src/users/types';
 export class UsersService {
   private users: User[] = [
     {
+      id: 1,
       username: 'john',
       password: 'changeme',
     },
     {
+      id: 2,
       username: 'chris',
       password: 'secret',
     },
     {
+      id: 3,
       username: 'maria',
       password: 'guess',
     },
@@ -25,7 +28,10 @@ export class UsersService {
     //or use nestjs recommended
     return this.users.map((user) => new SerializedUser(user));
   }
-  getUserById(username: string) {
+  getUserByUsername(username: string) {
     return this.users.find((user) => user.username === username);
+  }
+  getUserById(id: number) {
+    return this.users.find((user) => user.id === id);
   }
 }
